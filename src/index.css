@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'EB Garamond', Georgia, serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: #4B6344;
+    color: #F5EFEB;
+  }
+}
+
+@layer components {
+  .font-termina {
+    font-family: 'Outfit', system-ui, sans-serif;
+  }
+
+  .font-garamond {
+    font-family: 'EB Garamond', Georgia, serif;
+  }
+
+  .font-script {
+    font-family: 'WindSong', 'Dancing Script', cursive;
+  }
+}
+
+@layer utilities {
+  /* Placeholder for images */
+  .img-placeholder {
+    background: linear-gradient(135deg, #FFF8F1 0%, #E5E7EB 100%);
+  }
+
+  .video-placeholder {
+    background: linear-gradient(135deg, #E9A0A0 0%, #FFF8F1 100%);
+  }
+}
