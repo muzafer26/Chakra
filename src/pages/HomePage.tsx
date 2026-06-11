@@ -1,5 +1,4 @@
-import { MapPin, Phone, ArrowRight, Heart } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import PlaceholderImage from '../components/PlaceholderImage';
 import PlaceholderVideo from '../components/PlaceholderVideo';
 
@@ -8,6 +7,23 @@ interface HomePageProps {
 }
 
 const HomePage = ({ onNavigate }: HomePageProps) => {
+  // Hero slider images
+  const heroImages = [
+    '/assets/Img/homepg.avif',
+    '/assets/Img/homepg1.avif',
+    '/assets/Img/homepg2.avif',
+    '/assets/Img/homepg3.avif',
+    '/assets/Img/homepg4.avif'
+  ];
+  const [currentHeroIndex, setCurrentHeroIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentHeroIndex((prev) => (prev + 1) % heroImages.length);
+    }, 4500);
+    return () => clearInterval(timer);
+  }, []);
+
   // State for menu item likes
   const [likes, setLikes] = useState<Record<number, number>>({
     0: 48,
@@ -26,14 +42,39 @@ const HomePage = ({ onNavigate }: HomePageProps) => {
 
   return (
     <div className="min-h-screen bg-neutral">
-      {/* Hero Section */}
-      <section className="relative h-[65vh] lg:h-[80vh] overflow-hidden">
-        <PlaceholderImage
-          alt="Chakra hero image"
-          aspectRatio="h-full"
-          label="Hero Image"
-          className="w-full h-full object-cover"
-        />
+      {/* Hero Section with Smooth Slider */}
+      <section className="relative h-[65vh] lg:h-[80vh] overflow-hidden bg-tertiary">
+        {heroImages.map((src, index) => (
+          <div
+            key={src}
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+              index === currentHeroIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
+            }`}
+          >
+            <img
+              src={src}
+              alt={`Chakra dining ambience slider ${index + 1}`}
+              className="w-full h-full object-cover"
+              loading={index === 0 ? "eager" : "lazy"}
+            />
+            {/* Subtle dark gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/30 pointer-events-none" />
+          </div>
+        ))}
+        
+        {/* Slider Indicator Dots */}
+        <div className="absolute bottom-14 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+          {heroImages.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentHeroIndex(index)}
+              className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                index === currentHeroIndex ? 'bg-[#9C2C2C] w-6' : 'bg-neutral/40 hover:bg-neutral/80'
+              }`}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
+        </div>
       </section>
 
       {/* Overlapping Badges */}

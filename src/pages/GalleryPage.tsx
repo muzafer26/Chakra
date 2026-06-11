@@ -45,7 +45,7 @@ const GalleryPage = () => {
                   alt={img.label}
                   aspectRatio="h-full min-h-[200px]"
                   label={img.label}
-                  className="hover:scale-105 transition-transform duration-500 w-full h-full object-cover"
+                  className="w-full h-full object-cover"
                 />
                 {/* Overlay details */}
                 <div className="absolute inset-0 bg-tertiary/40 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-sm text-left">

@@ -14,12 +14,23 @@ const getAssetSrc = (label?: string, alt?: string): string | null => {
     return '/assets/Img/chakra_logo.jpg';
   }
 
-  // 2. Specific Dish Mappings to Collected Food Photos
-  if (query.includes('butter chicken') || query.includes('lunch spread') || query.includes('hero') && query.includes('menu')) {
+  // 2. Main layout structures
+  if (query.includes('story') || query.includes('history') || query.includes('early years') || query.includes('heritage')) {
+    return '/assets/Img/ourstory.avif';
+  }
+  if (query.includes('hero') && !query.includes('menu') || query.includes('entrance') || query.includes('atmosphere')) {
+    return '/assets/Img/homepg.avif';
+  }
+  if (query.includes('interior') || query.includes('main dining') || query.includes('bar area') || query.includes('bar image')) {
+    return '/assets/Img/ambience_interior.webp';
+  }
+
+  // 3. Specific Dish Mappings to Collected Food Photos
+  if (query.includes('butter chicken') || query.includes('lunch spread') || query.includes('menu hero') || query.includes('curry') || query.includes('rogan josh') || query.includes('mutton') || query.includes('fish')) {
     return '/assets/Img/lunch_spread.jpg';
   }
   
-  if (query.includes('ghee roast') || query.includes('roasted') || query.includes('pesto') || query.includes('grilled')) {
+  if (query.includes('ghee roast') || query.includes('roasted') || query.includes('pesto') || query.includes('grilled') || query.includes('chicken starter') || query.includes('chicken starters')) {
     return '/assets/Img/roasted_chicken.jpg';
   }
   
@@ -27,26 +38,19 @@ const getAssetSrc = (label?: string, alt?: string): string | null => {
     return '/assets/Img/chicken_wings.jpg';
   }
   
-  if (query.includes('chicken tikka') || query.includes('tikka') || query.includes('starter') || query.includes('starters') || query.includes('plating') || query.includes('kebab')) {
+  if (query.includes('chicken tikka') || query.includes('tikka') || query.includes('starter') || query.includes('starters') || query.includes('plating') || query.includes('kebab') || query.includes('tandoori')) {
     return '/assets/Img/chicken_starters.webp';
   }
   
-  if (query.includes('paneer') || query.includes('dal makhani') || query.includes('vegetarian') || query.includes('naan') || query.includes('bread') || query.includes('bar area') || query.includes('bar image') || query.includes('gathering')) {
+  if (query.includes('paneer') || query.includes('dal makhani') || query.includes('vegetarian') || query.includes('naan') || query.includes('bread') || query.includes('paratha') || query.includes('gathering')) {
     return '/assets/Img/veg_spread.jpg';
   }
 
-  if (query.includes('story') || query.includes('history') || query.includes('early years') || query.includes('heritage')) {
-    return '/assets/Img/ourstory.jpg';
+  // For desserts or any other food keywords, use the vegetarian spread photo
+  if (query.includes('dessert') || query.includes('desserts') || query.includes('jamun') || query.includes('rasmalai') || query.includes('kulfi') || query.includes('sweet')) {
+    return '/assets/Img/veg_spread.jpg';
   }
 
-  if (query.includes('interior')) {
-    return '/assets/Img/ambience_interior.webp';
-  }
-
-  if (query.includes('hero') || query.includes('entrance') || query.includes('main dining') || query.includes('atmosphere')) {
-    return '/assets/Img/homepage_hero.jpg';
-  }
-  
   // Instagram images
   if (query.includes('ig ') || query.includes('instagram')) {
     const numMatch = query.match(/\d+/);
@@ -54,7 +58,7 @@ const getAssetSrc = (label?: string, alt?: string): string | null => {
     const igImages = [
       '/assets/Img/chicken_wings.jpg',
       '/assets/Img/ambience_interior.webp',
-      '/assets/Img/homepage_hero.jpg',
+      '/assets/Img/homepg.avif',
       '/assets/Img/chicken_starters.webp',
       '/assets/Img/lunch_spread.jpg',
       '/assets/Img/roasted_chicken.jpg',
@@ -64,7 +68,7 @@ const getAssetSrc = (label?: string, alt?: string): string | null => {
     return igImages[index % igImages.length];
   }
 
-  return '/assets/Img/homepage_hero.jpg';
+  return '/assets/Img/veg_spread.jpg';
 };
 
 const PlaceholderImage = ({
@@ -86,7 +90,7 @@ const PlaceholderImage = ({
         <img
           src={assetSrc}
           alt={alt}
-          className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+          className="w-full h-full object-cover"
           loading="lazy"
         />
       ) : (
