@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { MapPin, Phone, ArrowRight, Heart } from 'lucide-react';
 import PlaceholderImage from '../components/PlaceholderImage';
 import PlaceholderVideo from '../components/PlaceholderVideo';
 
