@@ -34,21 +34,22 @@ const HomePage = ({ onNavigate }: HomePageProps) => {
           label="Hero Image"
           className="w-full h-full object-cover"
         />
-        {/* Michelin-style Overlapping Badges */}
-        <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 flex gap-4 z-20">
-          <div className="w-20 h-20 rounded-full bg-[#9C2C2C] text-neutral flex flex-col items-center justify-center shadow-lg border border-neutral/20 text-center">
-            <span className="font-termina text-[8px] uppercase tracking-wider">Estd.</span>
-            <span className="font-garamond text-headline-sm font-semibold">1985</span>
-          </div>
-          <div className="w-20 h-20 rounded-full bg-[#9C2C2C] text-neutral flex flex-col items-center justify-center shadow-lg border border-neutral/20 text-center">
-            <span className="font-termina text-[8px] uppercase tracking-wider">Saki</span>
-            <span className="font-garamond text-headline-sm font-semibold">Naka</span>
-          </div>
-        </div>
       </section>
 
+      {/* Overlapping Badges */}
+      <div className="relative -mt-10 flex justify-center gap-4 z-20">
+        <div className="w-20 h-20 rounded-full bg-[#9C2C2C] text-neutral flex flex-col items-center justify-center shadow-lg border border-neutral/20 text-center">
+          <span className="font-termina text-[8px] uppercase tracking-wider">Estd.</span>
+          <span className="font-garamond text-headline-sm font-semibold">1985</span>
+        </div>
+        <div className="w-20 h-20 rounded-full bg-[#9C2C2C] text-neutral flex flex-col items-center justify-center shadow-lg border border-neutral/20 text-center">
+          <span className="font-termina text-[8px] uppercase tracking-wider">Saki</span>
+          <span className="font-garamond text-headline-sm font-semibold">Naka</span>
+        </div>
+      </div>
+
       {/* Spacer for badges */}
-      <div className="h-12 bg-surface-accent" />
+      <div className="h-6 bg-surface-accent" />
 
       {/* Intro Section - Salmon Pink Background */}
       <section className="bg-surface-accent text-tertiary py-xl lg:py-[120px] text-center border-b border-secondary/20">

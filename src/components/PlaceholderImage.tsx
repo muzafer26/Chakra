@@ -9,41 +9,42 @@ interface PlaceholderImageProps {
 const getAssetSrc = (label?: string, alt?: string): string | null => {
   const query = ((label || '') + ' ' + (alt || '')).toLowerCase();
   
-  if (query.includes('hero') && query.includes('menu')) {
-    return '/assets/Img/Indulge in a Love Affair with Flavors at Chakra! ❤️🍽️ Our delectable lunch spread is a symphon.jpg';
-  }
-  if (query.includes('hero')) {
-    return '/assets/Img/Chakra is a popular restaurant located in Sakinaka, Mumbai that specializes in serving delicious.jpg';
-  }
+  // 1. Logo
   if (query.includes('logo')) {
-    return '/assets/Img/chakra logo.jpg';
+    return '/assets/Img/chakra_logo.jpg';
   }
-  if (query.includes('signature') || query.includes('wings') || query.includes('dish') || query.includes('ghee roast')) {
-    return '/assets/Img/Chakra in Sakinaka sets the bar high with its irresistible chicken wings. Succulent, perfectly s.jpg';
+
+  // 2. Specific Dish Mappings to Collected Food Photos
+  if (query.includes('butter chicken') || query.includes('lunch spread') || query.includes('hero') && query.includes('menu')) {
+    return '/assets/Img/lunch_spread.jpg';
   }
-  if (query.includes('early years') || query.includes('history')) {
-    return '/assets/Img/The restaurant has an array of Vegetarian & Non-Vegetarian dishes that are sure to satisfy food .jpg';
+  
+  if (query.includes('ghee roast') || query.includes('roasted') || query.includes('pesto') || query.includes('grilled')) {
+    return '/assets/Img/roasted_chicken.jpg';
   }
-  if (query.includes('story')) {
-    return '/assets/Img/Chakra is a popular restaurant located in Sakinaka, Mumbai that specializes in serving deliciou.webp';
+  
+  if (query.includes('wings') || query.includes('signature') || query.includes('chana') || query.includes('koliwada')) {
+    return '/assets/Img/chicken_wings.jpg';
   }
-  if (query.includes('main dining') || query.includes('atmosphere')) {
-    return '/assets/Img/Chakra is a popular restaurant located in Sakinaka, Mumbai that specializes in serving delicious.jpg';
+  
+  if (query.includes('chicken tikka') || query.includes('tikka') || query.includes('starter') || query.includes('starters') || query.includes('plating') || query.includes('kebab')) {
+    return '/assets/Img/chicken_starters.webp';
   }
+  
+  if (query.includes('paneer') || query.includes('dal makhani') || query.includes('vegetarian') || query.includes('naan') || query.includes('bread') || query.includes('bar area') || query.includes('bar image') || query.includes('gathering')) {
+    return '/assets/Img/veg_spread.jpg';
+  }
+
+  if (query.includes('story') || query.includes('history') || query.includes('early years') || query.includes('heritage')) {
+    return '/assets/Img/ourstory.jpg';
+  }
+
   if (query.includes('interior')) {
-    return '/assets/Img/Chakra is a popular restaurant located in Sakinaka, Mumbai that specializes in serving deliciou.webp';
+    return '/assets/Img/ambience_interior.webp';
   }
-  if (query.includes('bar area') || query.includes('bar image')) {
-    return '/assets/Img/The restaurant has an array of Vegetarian & Non-Vegetarian dishes that are sure to satisfy food .jpg';
-  }
-  if (query.includes('food plating') || query.includes('plating') || query.includes('kebab')) {
-    return '/assets/Img/Chicken starters are a popular choice to kick off a meal for several reasons. Firstly, chicken .webp';
-  }
-  if (query.includes('gathering') || query.includes('guests') || query.includes('people')) {
-    return '/assets/Img/The restaurant has an array of Vegetarian & Non-Vegetarian dishes that are sure to satisfy food .jpg';
-  }
-  if (query.includes('entrance')) {
-    return '/assets/Img/Chakra is a popular restaurant located in Sakinaka, Mumbai that specializes in serving delicious.jpg';
+
+  if (query.includes('hero') || query.includes('entrance') || query.includes('main dining') || query.includes('atmosphere')) {
+    return '/assets/Img/homepage_hero.jpg';
   }
   
   // Instagram images
@@ -51,33 +52,19 @@ const getAssetSrc = (label?: string, alt?: string): string | null => {
     const numMatch = query.match(/\d+/);
     const index = numMatch ? parseInt(numMatch[0], 10) - 1 : 0;
     const igImages = [
-      '/assets/Img/Chakra in Sakinaka sets the bar high with its irresistible chicken wings. Succulent, perfectly s.jpg',
-      '/assets/Img/Chakra is a popular restaurant located in Sakinaka, Mumbai that specializes in serving deliciou.webp',
-      '/assets/Img/Chakra is a popular restaurant located in Sakinaka, Mumbai that specializes in serving delicious.jpg',
-      '/assets/Img/Chicken starters are a popular choice to kick off a meal for several reasons. Firstly, chicken .webp',
-      '/assets/Img/Indulge in a Love Affair with Flavors at Chakra! ❤️🍽️ Our delectable lunch spread is a symphon.jpg',
-      '/assets/Img/Indulge in the Irresistible Delight of Chakras Succulent Roasted Chicken Starter...#chicken #fo.jpg',
-      '/assets/Img/The restaurant has an array of Vegetarian & Non-Vegetarian dishes that are sure to satisfy food .jpg',
-      '/assets/Img/chakra logo.jpg'
+      '/assets/Img/chicken_wings.jpg',
+      '/assets/Img/ambience_interior.webp',
+      '/assets/Img/homepage_hero.jpg',
+      '/assets/Img/chicken_starters.webp',
+      '/assets/Img/lunch_spread.jpg',
+      '/assets/Img/roasted_chicken.jpg',
+      '/assets/Img/veg_spread.jpg',
+      '/assets/Img/chakra_logo.jpg'
     ];
     return igImages[index % igImages.length];
   }
 
-  // Fallbacks
-  if (query.includes('butter chicken')) {
-    return '/assets/Img/Indulge in a Love Affair with Flavors at Chakra! ❤️🍽️ Our delectable lunch spread is a symphon.jpg';
-  }
-  if (query.includes('dal makhani')) {
-    return '/assets/Img/The restaurant has an array of Vegetarian & Non-Vegetarian dishes that are sure to satisfy food .jpg';
-  }
-  if (query.includes('ghee roast')) {
-    return '/assets/Img/Indulge in the Irresistible Delight of Chakras Succulent Roasted Chicken Starter...#chicken #fo.jpg';
-  }
-  if (query.includes('naan') || query.includes('bread')) {
-    return '/assets/Img/The restaurant has an array of Vegetarian & Non-Vegetarian dishes that are sure to satisfy food .jpg';
-  }
-
-  return '/assets/Img/Chakra is a popular restaurant located in Sakinaka, Mumbai that specializes in serving delicious.jpg';
+  return '/assets/Img/homepage_hero.jpg';
 };
 
 const PlaceholderImage = ({

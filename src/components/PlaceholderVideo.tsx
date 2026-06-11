@@ -11,19 +11,19 @@ const getVideoSrc = (label?: string): string | null => {
   const query = (label || '').toLowerCase();
   
   if (query.includes('welcome') || query.includes('home')) {
-    return '/assets/videos/Midweek bliss at Chakra Restaurant! Who says Wednesdays cant be extraordinary Join us for a tan.mp4';
+    return '/assets/videos/midweek_bliss.mp4';
   }
   if (query.includes('story') || query.includes('history')) {
-    return '/assets/videos/At Chakra, we measure our success by the happiness of our valued customers.As we bask in the war.mp4';
+    return '/assets/videos/customer_happiness.mp4';
   }
   if (query.includes('kebab') || query.includes('food')) {
-    return '/assets/videos/Looking for a delicious and satisfying meal Look no further than our mouth-watering kebabs! Our .mp4';
+    return '/assets/videos/kebab_promo.mp4';
   }
   if (query.includes('bar') || query.includes('mixology') || query.includes('drink')) {
-    return '/assets/videos/Welcome to Chakra, where the divine concoctions of mixology and the spirits of taste collide, cr.mp4';
+    return '/assets/videos/mixology_welcome.mp4';
   }
   
-  return '/assets/videos/At Chakra, we measure our success by the happiness of our valued customers.As we bask in the war.mp4';
+  return '/assets/videos/customer_happiness.mp4';
 };
 
 const PlaceholderVideo = ({
